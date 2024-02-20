@@ -1,10 +1,18 @@
 const Libro = require("../models/libroModel");
 
+/**
+ * Get all the libros from the database
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
+ */
 exports.getAllLibros = async (req, res) => {
   try {
+    // Fetch all libros from the database
     const libros = await Libro.find();
+    // Send the libros as a JSON response with status code 200
     res.status(200).json(libros);
   } catch (error) {
+    // Handle any errors by sending an error message with status code 500
     res.status(500).json({ error: "Error al obtener los libros" });
   }
 };
